@@ -29,12 +29,25 @@ const Board = () => {
     setCount(count);
   };
 
+  function Header() {
+    return (
+      <Flex
+        sx={{
+          backgroundColor: '#ededed',
+          height: '270px',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Text sx={{ fontSize: '15em', fontWeight: '900' }}> &#960; </Text>
+      </Flex>
+    );
+  }
+
   return (
-    <Container
-      sx={{ width: '800px', border: '1px solid red', justifyContent: 'center' }}
-      bg="muted"
-    >
+    <Container sx={{ width: '800px', justifyContent: 'center' }} bg="muted">
       <Box>
+        <Header />
         <Flex
           sx={{
             flexDirection: 'column',
