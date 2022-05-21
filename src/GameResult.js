@@ -48,7 +48,7 @@ const GameResult = forwardRef(({ count }, ref) => {
   };
 
   return (
-    <Card sx={{ width: '100%' }}>
+    <Card pl={30} pr={30} sx={{ width: '100%', justifyContent: 'center' }}>
       <Flex sx={{ flexWrap: 'wrap' }}>
         <DigitRender value="3." />
         {digits.map((digit, index) => (
@@ -56,26 +56,24 @@ const GameResult = forwardRef(({ count }, ref) => {
         ))}
 
         {isPlaying && pi.length !== digits.length ? (
-          <DigitRender
-            value={<Spinner sx={{ height: 'auto', width: 'auto' }} />}
-            isSpinner={true}
-          />
+          <Flex ml={0.5} sx={{ alignItems: 'center' }}>
+            <Spinner sx={{ height: '20px', width: '20px' }} />
+          </Flex>
         ) : null}
       </Flex>
     </Card>
   );
 });
 
-const DigitRender = ({ value, isSpinner }) => {
+const DigitRender = ({ value }) => {
   return (
     <Flex
       sx={{
         height: '25px;',
-        width: '15px',
         justifyContent: 'space-around',
       }}
     >
-      {isSpinner ? value : <Text sx={{ fontSize: 3 }}>{value}</Text>}
+      <Text sx={{ fontSize: 4, fontWeight: '1000' }}>{value}</Text>
     </Flex>
   );
 };
