@@ -17,7 +17,7 @@ const GameResult = forwardRef(({ count }, ref) => {
       if (!isPlaying) {
         setDigits([]);
         resetStates(true);
-        setPi(lib.calculateNthDigitsOfPi(count));
+        setPi(lib.calculateNthDigitsOfPi(count + 1));
       }
     },
 
