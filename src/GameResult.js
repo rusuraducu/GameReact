@@ -49,7 +49,7 @@ const GameResult = forwardRef(({ count }, ref) => {
 
   return (
     <Card>
-      <Flex sx={{ width: '200px', flexWrap: 'wrap' }}>
+      <Flex sx={{ flexWrap: 'wrap' }}>
         <DigitRender value="3." />
         {digits.map((digit, index) => (
           <DigitRender value={digit} key={index} />
