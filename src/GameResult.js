@@ -1,11 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 import * as lib from './algorithm/PiCalculator.js';
 
-function GameResult({ count }) {
+const GameResult = forwardRef(({ count }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [digits, setDigits] = useState([]);
   const [pi, setPi] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useImperativeHandle(ref, () => ({
+    startGame() {
+      if (!isPlaying) {
+        setDigits([]);
+        resetStates(true);
+        setPi(lib.calculateNthDigitsOfPi(count));
+      }
+    },
+
+    stopGame() {
+      if (isPlaying) {
+        resetStates(false);
+      }
+    },
+  }));
 
   useEffect(() => {
     setTimeout(() => {
@@ -14,41 +35,20 @@ function GameResult({ count }) {
         setDigits(tempDigits);
         setCurrentIndex(currentIndex + 1);
       } else if (isPlaying) {
-        setCurrentIndex(0);
-        setIsPlaying(false);
-        setPi([]);
+        resetStates(false);
       }
     }, 100);
   }, [pi, isPlaying, digits]);
 
-  function stop() {
-    if (isPlaying) {
-      setCurrentIndex(0);
-      setIsPlaying(false);
-      setPi([]);
-    }
-  }
-
-  function start() {
-    if (isPlaying) {
-      return;
-    }
-    setDigits([]);
-    setPi([]);
+  const resetStates = (isPlaying) => {
     setCurrentIndex(0);
-    setIsPlaying(true);
-    var iter = lib.generateDigitsOfPi();
-    const myTempArray = [];
-    for (let i = 0; i < 10000; i++) {
-      let currentDigit = iter.next().value;
-      myTempArray.push(currentDigit);
-    }
-    setPi(myTempArray);
-  }
+    setIsPlaying(isPlaying);
+    setPi([]);
+  };
+
   return (
     <div>
-      <button onClick={() => start()}> Start </button>
-      <button onClick={() => stop()}> Stop </button>
+      <div> 3. </div>
       {digits.map((value, index) => (
         <span key={index}>{value}</span>
       ))}
@@ -57,6 +57,6 @@ function GameResult({ count }) {
       ) : null}
     </div>
   );
-}
+});
 
 export default GameResult;

@@ -1,5 +1,19 @@
 // This function will return an iterator for each digit.
-export function* generateDigitsOfPi() {
+
+export function calculateNthDigitsOfPi(count) {
+  var iter = generateCurrentDigit();
+  const pi = [];
+
+  for (let i = 0; i < count; i++) {
+    let currentDigit = iter.next().value;
+    if (i !== 0) {
+      pi.push(currentDigit);
+    }
+  }
+  return pi;
+}
+
+function* generateCurrentDigit() {
   let q = 1n;
   let r = 180n;
   let t = 60n;
