@@ -31,12 +31,12 @@ const Board = () => {
   };
 
   return (
-    <>
+    <Container p={4} bg="muted">
       <Card mt={10} mb={20} mr={20} ml={20}>
         <GameCounter handleCounterChange={handleCounterChange} />
         <GameControllers startGame={startGame} stopGame={stopGame} />
       </Card>
       <GameResult ref={gameRef} count={count} />
-    </>
+    </Container>
   );
 };
