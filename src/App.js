@@ -7,32 +7,31 @@ import GameControllers from './GameControllers';
 import GameResult from './GameResult';
 
 export default function App() {
-  const Game = () => {
-    const gameRef = useRef(null);
-    const [count, setCount] = useState(0);
+  return <Board />;
+}
 
-    const startGame = () => {
-      gameRef.current.startGame();
-    };
+const Board = () => {
+  const gameRef = useRef(null);
+  const [count, setCount] = useState(0);
 
-    const stopGame = () => {
-      gameRef.current.stopGame();
-    };
-
-    const handleCounterChange = (count) => {
-      console.log(count);
-      setCount(count);
-    };
-
-    return (
-      <div>
-        <GameCounter handleCounterChange={handleCounterChange} />
-        <GameControllers startGame={startGame} stopGame={stopGame} />
-
-        <GameResult ref={gameRef} count={count} />
-      </div>
-    );
+  const startGame = () => {
+    gameRef.current.startGame();
   };
 
-  return <Game />;
-}
+  const stopGame = () => {
+    gameRef.current.stopGame();
+  };
+
+  const handleCounterChange = (count) => {
+    setCount(count);
+  };
+
+  return (
+    <div>
+      <GameCounter handleCounterChange={handleCounterChange} />
+      <GameControllers startGame={startGame} stopGame={stopGame} />
+
+      <GameResult ref={gameRef} count={count} />
+    </div>
+  );
+};

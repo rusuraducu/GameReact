@@ -9,10 +9,10 @@ function GameCounter({ handleCounterChange, isPlaying }) {
 
   function handleDispatchedEvent(actionType) {
     switch (actionType) {
-      case 'increment':
+      case 'INCREMENT':
         setCounter(count + 1);
         break;
-      case 'decrement':
+      case 'DECREMENT':
         const newValue = count === MINIMUM_DIGITS ? MINIMUM_DIGITS : count - 1;
         setCounter(newValue);
         break;
@@ -29,9 +29,9 @@ function GameCounter({ handleCounterChange, isPlaying }) {
 
   return (
     <>
-      <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
-      <input type="number" value={count} />
-      <button onClick={() => dispatch({ type: 'increment' })}>+</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>-</button>
+      <input type="text" value={count} />
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>+</button>
     </>
   );
 }
