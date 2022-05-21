@@ -3,15 +3,10 @@ import { createRoot } from 'react-dom/client';
 
 import App from './App';
 import React from 'react';
-import './style.css';
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'theme-ui';
-import GameCounter from './GameCounter';
-import GameControllers from './GameControllers';
-import GameResult from './GameResult';
-import { Box, Flex, Card, Text } from 'theme-ui';
-import Test from './Theme';
-import { theme } from './CustomTheme.js';
+import { theme } from './style/CustomTheme.js';
+import './style.css';
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
