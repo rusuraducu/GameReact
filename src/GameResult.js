@@ -48,7 +48,7 @@ const GameResult = forwardRef(({ count }, ref) => {
   };
 
   return (
-    <Card pl={30} pr={30} sx={{ width: '100%', justifyContent: 'center' }}>
+    <Card pl={30} pr={30} sx={{ width: '100%' }}>
       <Flex sx={{ flexWrap: 'wrap' }}>
         <DigitRender value="3." />
         {digits.map((digit, index) => (
@@ -73,7 +73,9 @@ const DigitRender = ({ value }) => {
         justifyContent: 'space-around',
       }}
     >
-      <Text sx={{ fontSize: 4, fontWeight: '1000' }}>{value}</Text>
+      <Text sx={{ fontSize: 4, fontStyle: 'italic', fontWeight: '1000' }}>
+        {value}
+      </Text>
     </Flex>
   );
 };
