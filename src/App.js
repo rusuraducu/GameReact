@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import GameCounter from './GameCounter';
 import GameControllers from './GameControllers';
 import GameResult from './GameResult';
-import { Container, Card, Flex, Text } from 'theme-ui';
+import { Container, Card, Flex, Text, Box } from 'theme-ui';
 import fontawesome from '@fortawesome/fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 fontawesome.library.add(faMinus, faPlus);
@@ -30,25 +30,36 @@ const Board = () => {
   };
 
   return (
-    <Container sx={{ width: '800px', border: '1px solid red' }} bg="muted">
-      <Flex sx={{ flexDirection: 'column' }}>
-        <Flex sx={{ flexDirection: 'column' }}>
-          <Flex sx={{ justifyContent: 'center' }}>
-            <h1>
-              <Text pt={3} pb={3}>
-                Display the first n-digits of &#960;
-              </Text>
-            </h1>
+    <Container
+      sx={{ width: '800px', border: '1px solid red', justifyContent: 'center' }}
+      bg="muted"
+    >
+      <Box>
+        <Flex
+          sx={{
+            flexDirection: 'column',
+            width: '400px',
+            marginLeft: '25%',
+          }}
+        >
+          <Flex sx={{ flexDirection: 'column' }}>
+            <Flex sx={{ justifyContent: 'center' }}>
+              <h1>
+                <Text pt={3} pb={3}>
+                  Display the first n-digits of &#960;
+                </Text>
+              </h1>
+            </Flex>
+            <Card sx={{ width: '100%' }}>
+              <GameCounter handleCounterChange={handleCounterChange} />
+              <GameControllers startGame={startGame} stopGame={stopGame} />
+            </Card>
           </Flex>
-          <Card sx={{ width: '100%' }}>
-            <GameCounter handleCounterChange={handleCounterChange} />
-            <GameControllers startGame={startGame} stopGame={stopGame} />
-          </Card>
+          <Flex mt={4}>
+            <GameResult ref={gameRef} count={count} />
+          </Flex>
         </Flex>
-        <Flex>
-          <GameResult ref={gameRef} count={count} />
-        </Flex>
-      </Flex>
+      </Box>
     </Container>
   );
 };

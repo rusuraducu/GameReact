@@ -41,7 +41,12 @@ function GameCounter({ handleCounterChange }) {
         Number of digits
       </Flex>
 
-      <Flex>
+      <Flex
+        sx={{
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
         <Button
           mr={2}
           sx={circleButton}
@@ -53,7 +58,11 @@ function GameCounter({ handleCounterChange }) {
           />
         </Button>
 
-        <Input sx={{ width: '60px' }} type="text" value={count} />
+        <Input
+          sx={{ width: '80px', height: '40px' }}
+          type="text"
+          value={count}
+        />
         <Button
           ml={2}
           sx={circleButton}
@@ -69,14 +78,11 @@ function GameCounter({ handleCounterChange }) {
 const circleButton = {
   backgroundColor: 'black',
   display: 'flex',
-  height: '3vw',
-  width: '3vw',
+  height: '30px',
+  width: '30px',
   borderRadius: '50%',
-  padding: '3vw',
-  fontSize: '2vw',
   justifyContent: 'center',
   alignItems: 'center',
-  outline: 'none',
   border: 'none',
 };
 
