@@ -8,9 +8,9 @@ import * as lib from './algorithm/PiCalculator.js';
 
 const GameResult = forwardRef(({ count }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [digits, setDigits] = useState([]);
   const [pi, setPi] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   useImperativeHandle(ref, () => ({
     startGame() {
@@ -48,7 +48,7 @@ const GameResult = forwardRef(({ count }, ref) => {
 
   return (
     <div>
-      <div> 3. </div>
+      <span> 3.</span>
       {digits.map((value, index) => (
         <span key={index}>{value}</span>
       ))}
