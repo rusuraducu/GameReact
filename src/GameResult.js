@@ -50,9 +50,9 @@ const GameResult = forwardRef(({ count }, ref) => {
   return (
     <Card pl={30} pr={30} sx={{ width: '100%' }}>
       <Flex sx={{ flexWrap: 'wrap' }}>
-        <DigitRender value="3." />
+        <Digit value="3." />
         {digits.map((digit, index) => (
-          <DigitRender value={digit} key={index} />
+          <Digit value={digit} key={index} />
         ))}
 
         {isPlaying && pi.length !== digits.length ? (
@@ -65,7 +65,7 @@ const GameResult = forwardRef(({ count }, ref) => {
   );
 });
 
-const DigitRender = ({ value }) => {
+const Digit = ({ value }) => {
   return (
     <Flex
       sx={{

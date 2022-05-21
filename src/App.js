@@ -46,33 +46,31 @@ const Board = () => {
 
   return (
     <Container sx={{ width: '800px', justifyContent: 'center' }} bg="muted">
-      <Box>
-        <Header />
-        <Flex
-          sx={{
-            flexDirection: 'column',
-            width: '400px',
-            marginLeft: '25%',
-          }}
-        >
-          <Flex sx={{ flexDirection: 'column' }}>
-            <Flex sx={{ justifyContent: 'center' }}>
-              <h1>
-                <Text pt={3} pb={3}>
-                  Display the first n-digits of &#960;
-                </Text>
-              </h1>
-            </Flex>
-            <Card sx={{ width: '100%' }}>
-              <GameCounter handleCounterChange={handleCounterChange} />
-              <GameControllers startGame={startGame} stopGame={stopGame} />
-            </Card>
+      <Header />
+      <Flex
+        sx={{
+          flexDirection: 'column',
+          width: '400px',
+          marginLeft: '25%',
+        }}
+      >
+        <Flex sx={{ flexDirection: 'column' }}>
+          <Flex sx={{ justifyContent: 'center' }}>
+            <h1>
+              <Text pt={3} pb={3}>
+                Display the first n-digits of &#960;
+              </Text>
+            </h1>
           </Flex>
-          <Flex mt={4}>
-            <GameResult ref={gameRef} count={count} />
-          </Flex>
+          <Card sx={{ width: '100%' }}>
+            <GameCounter handleCounterChange={handleCounterChange} />
+            <GameControllers startGame={startGame} stopGame={stopGame} />
+          </Card>
         </Flex>
-      </Box>
+        <Flex mt={4}>
+          <GameResult ref={gameRef} count={count} />
+        </Flex>
+      </Flex>
     </Container>
   );
 };
