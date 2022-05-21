@@ -1,10 +1,15 @@
 import React, { useReducer, useEffect, useState } from 'react';
+import { Input, Button, Text, Flex } from 'theme-ui';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function GameCounter({ handleCounterChange, isPlaying }) {
+function GameCounter({ handleCounterChange }) {
   const MINIMUM_DIGITS = 2;
   const [count, setCounter] = useState(MINIMUM_DIGITS);
-  const [state, dispatch] = useReducer(reducer, count);
+  const reducer = (count, action) => {
+    handleDispatchedEvent(action.type);
+  };
 
+  const [state, dispatch] = useReducer(reducer, count);
   useEffect(() => handleCounterChange(count), [count]);
 
   function handleDispatchedEvent(actionType) {
@@ -16,24 +21,48 @@ function GameCounter({ handleCounterChange, isPlaying }) {
         const newValue = count === MINIMUM_DIGITS ? MINIMUM_DIGITS : count - 1;
         setCounter(newValue);
         break;
+      case 'RESET':
+        setCounter(MINIMUM_DIGITS);
+        break;
       default:
         throw new Error();
     }
   }
 
-  function reducer(count, action) {
-    if (!isPlaying) {
-      handleDispatchedEvent(action.type);
-    }
-  }
-
   return (
-    <>
-      <button onClick={() => dispatch({ type: 'DECREMENT' })}>-</button>
-      <input type="text" value={count} />
-      <button onClick={() => dispatch({ type: 'INCREMENT' })}>+</button>
-    </>
+    <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
+      <Button
+        mr={2}
+        sx={circleButton}
+        onClick={() => dispatch({ type: 'DECREMENT' })}
+      >
+        <FontAwesomeIcon sx={{ fontWeight: 'bold' }} icon="fa-solid fa-minus" />
+      </Button>
+
+      <Input sx={{ width: '60px' }} type="text" value={count} />
+      <Button
+        ml={2}
+        sx={circleButton}
+        onClick={() => dispatch({ type: 'INCREMENT' })}
+      >
+        <FontAwesomeIcon icon="fa-solid fa-plus" />
+      </Button>
+    </Flex>
   );
 }
+
+const circleButton = {
+  backgroundColor: 'black',
+  display: 'flex',
+  height: '3vw',
+  width: '3vw',
+  borderRadius: '50%',
+  padding: '3vw',
+  fontSize: '2vw',
+  justifyContent: 'center',
+  alignItems: 'center',
+  outline: 'none',
+  border: 'none',
+};
 
 export default GameCounter;

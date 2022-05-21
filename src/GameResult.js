@@ -4,7 +4,8 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from 'react';
-import * as lib from './algorithm/PiCalculator.js';
+import * as PiCalculator from './algorithm/PiCalculator.js';
+import { Spinner, Card, Text, Flex } from 'theme-ui';
 
 const GameResult = forwardRef(({ count }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -17,7 +18,7 @@ const GameResult = forwardRef(({ count }, ref) => {
       if (!isPlaying) {
         setDigits([]);
         resetStates(true);
-        setPi(lib.calculateNthDigitsOfPi(count + 1));
+        setPi(PiCalculator.calculateNthDigitsOfPi(count + 1));
       }
     },
 
@@ -47,16 +48,36 @@ const GameResult = forwardRef(({ count }, ref) => {
   };
 
   return (
-    <div>
-      <span> 3.</span>
-      {digits.map((value, index) => (
-        <span key={index}>{value}</span>
-      ))}
-      {isPlaying && pi.length !== digits.length ? (
-        <span class="loader" style={{ with: 10 }}></span>
-      ) : null}
-    </div>
+    <Card>
+      <Flex sx={{ width: '200px', flexWrap: 'wrap' }}>
+        <DigitRender value="3." />
+        {digits.map((digit, index) => (
+          <DigitRender value={digit} key={index} />
+        ))}
+
+        {isPlaying && pi.length !== digits.length ? (
+          <DigitRender
+            value={<Spinner sx={{ height: 'auto', width: 'auto' }} />}
+            isSpinner={true}
+          />
+        ) : null}
+      </Flex>
+    </Card>
   );
 });
+
+const DigitRender = ({ value, isSpinner }) => {
+  return (
+    <Flex
+      sx={{
+        height: '25px;',
+        width: '15px',
+        justifyContent: 'space-around',
+      }}
+    >
+      {isSpinner ? value : <Text sx={{ fontSize: 3 }}>{value}</Text>}
+    </Flex>
+  );
+};
 
 export default GameResult;

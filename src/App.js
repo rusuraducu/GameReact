@@ -1,10 +1,13 @@
 import React from 'react';
 import './style.css';
 import React, { useRef, useState } from 'react';
-import Pi from './Pi';
+import { ThemeProvider } from 'theme-ui';
 import GameCounter from './GameCounter';
 import GameControllers from './GameControllers';
 import GameResult from './GameResult';
+import { Box, Flex, Card, Text } from 'theme-ui';
+import Test from './Theme';
+import CustomTheme from './CustomTheme.js';
 
 export default function App() {
   return <Board />;
@@ -27,11 +30,12 @@ const Board = () => {
   };
 
   return (
-    <div>
-      <GameCounter handleCounterChange={handleCounterChange} />
-      <GameControllers startGame={startGame} stopGame={stopGame} />
-
+    <>
+      <Card mt={10} mb={20} mr={20} ml={20}>
+        <GameCounter handleCounterChange={handleCounterChange} />
+        <GameControllers startGame={startGame} stopGame={stopGame} />
+      </Card>
       <GameResult ref={gameRef} count={count} />
-    </div>
+    </>
   );
 };
