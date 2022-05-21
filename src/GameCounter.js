@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useState } from 'react';
-import { Input, Button, Text, Flex } from 'theme-ui';
+import { Input, Button, Box, Flex } from 'theme-ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function GameCounter({ handleCounterChange }) {
@@ -30,23 +30,38 @@ function GameCounter({ handleCounterChange }) {
   }
 
   return (
-    <Flex sx={{ justifyContent: 'center', alignItems: 'center' }}>
-      <Button
-        mr={2}
-        sx={circleButton}
-        onClick={() => dispatch({ type: 'DECREMENT' })}
-      >
-        <FontAwesomeIcon sx={{ fontWeight: 'bold' }} icon="fa-solid fa-minus" />
-      </Button>
+    <Flex
+      sx={{
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Flex mt={2} mb={3}>
+        Number of digits
+      </Flex>
 
-      <Input sx={{ width: '60px' }} type="text" value={count} />
-      <Button
-        ml={2}
-        sx={circleButton}
-        onClick={() => dispatch({ type: 'INCREMENT' })}
-      >
-        <FontAwesomeIcon icon="fa-solid fa-plus" />
-      </Button>
+      <Flex>
+        <Button
+          mr={2}
+          sx={circleButton}
+          onClick={() => dispatch({ type: 'DECREMENT' })}
+        >
+          <FontAwesomeIcon
+            sx={{ fontWeight: '900' }}
+            icon="fa-solid fa-minus"
+          />
+        </Button>
+
+        <Input sx={{ width: '60px' }} type="text" value={count} />
+        <Button
+          ml={2}
+          sx={circleButton}
+          onClick={() => dispatch({ type: 'INCREMENT' })}
+        >
+          <FontAwesomeIcon icon="fa-solid fa-plus" />
+        </Button>
+      </Flex>
     </Flex>
   );
 }

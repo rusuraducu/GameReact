@@ -6,8 +6,6 @@ import GameCounter from './GameCounter';
 import GameControllers from './GameControllers';
 import GameResult from './GameResult';
 import { Box, Flex, Card, Text } from 'theme-ui';
-import Test from './Theme';
-import CustomTheme from './CustomTheme.js';
 
 export default function App() {
   return <Board />;
