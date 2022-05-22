@@ -45,12 +45,12 @@ const Board = () => {
   }
 
   return (
-    <Container sx={{ width: '800px', justifyContent: 'center' }} bg="muted">
+    <Container sx={{ width: '70vw', justifyContent: 'center' }} bg="muted">
       <Header />
       <Flex
         sx={{
           flexDirection: 'column',
-          width: '400px',
+          width: '30vw',
           marginLeft: '25%',
         }}
       >
