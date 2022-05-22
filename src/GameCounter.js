@@ -3,7 +3,7 @@ import { Input, Button, Box, Flex } from 'theme-ui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function GameCounter({ handleCounterChange }) {
-  const MINIMUM_DIGITS = 100;
+  const MINIMUM_DIGITS = 20;
   const [count, setCounter] = useState(MINIMUM_DIGITS);
   const reducer = (count, action) => {
     handleDispatchedEvent(action.type);

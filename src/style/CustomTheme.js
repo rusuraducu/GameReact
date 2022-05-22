@@ -1,3 +1,6 @@
+import fontawesome from '@fortawesome/fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+
 export const theme = {
   fonts: {
     body: 'system-ui, sans-serif',
@@ -23,3 +26,5 @@ export const theme = {
     },
   },
 };
+
+fontawesome.library.add(faMinus, faPlus);

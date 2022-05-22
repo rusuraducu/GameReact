@@ -5,9 +5,6 @@ import GameCounter from './GameCounter';
 import GameControllers from './GameControllers';
 import GameResult from './GameResult';
 import { Container, Card, Flex, Text, Box } from 'theme-ui';
-import fontawesome from '@fortawesome/fontawesome';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-fontawesome.library.add(faMinus, faPlus);
 
 export default function App() {
   return <Board />;
