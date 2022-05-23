@@ -1,4 +1,3 @@
-import React from 'react';
 import './style.css';
 import React, { useRef, useState } from 'react';
 import GameCounter from './GameCounter';

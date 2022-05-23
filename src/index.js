@@ -2,8 +2,6 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import App from './App';
-import React from 'react';
-import React from 'react';
 import { ThemeProvider } from 'theme-ui';
 import { theme } from './style/CustomTheme.js';
 import './style.css';
